@@ -25,6 +25,8 @@ public:
     double getAmount() const { return amount; }
     QString getCategory() const { return category; }
     QDate getDate() const { return date; }
-};
+    int getId() const { return id; }
+ void setId(int i) { id = i; }
+} ;
 
 #endif
