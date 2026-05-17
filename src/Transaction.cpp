@@ -1,4 +1,3 @@
-
 #include "Transaction.h"
 
 // Transaction soyut sinif oldugu icin burada ekstra
