@@ -96,5 +96,5 @@ butce-app/
 
 ## Son Teslim
 
-- **Yükleme:** 28 Mayıs 2026 - 23:59
-- **Sunum:** 29 Mayıs 2026 - Laboratuvar
+- **Yükleme:** 
+- **Sunum:** 
