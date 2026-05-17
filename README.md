@@ -16,8 +16,8 @@ Gelir ve giderlerinizi kategori bazlı takip edebileceğiniz, haftalık/aylık i
 | İsim | Rol | Sorumluluk |
 |------|-----|------------|
 | Azra Topal | Backend | Transaction, Income, Expense, TransactionManager, DatabaseManager .cpp dosyaları |
-| Şevval Türkan kafes | Frontend | Qt Designer formları, arayüz bileşenleri |
-| Nisanur özpehlivan | OOP Tasarım + Veritabanı + Rapor | Header dosyaları, SQLite şeması, proje raporu, UML diyagramı |
+| Şevval Türkan Kafes | Frontend | Qt Designer formları, arayüz bileşenleri |
+| Nisanur Özpehlivan | OOP Tasarım + Veritabanı + Rapor | Header dosyaları, SQLite şeması, proje raporu, UML diyagramı |
 
 ---
 
