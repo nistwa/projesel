@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HedefDialog</class>
+ <widget class="QDialog" name="HedefDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>551</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Kategori:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="comboKategori">
+     <item>
+      <property name="text">
+       <string>Kozmetil&amp;Bakim</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Market&amp;Gida</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ulasim</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Yemek&amp;Kafe</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Giyim&amp;Aksesuar</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Eglence</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Saglik&amp;Eglence</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Abonelikler</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Egitim&amp;Kitap</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Faturalar</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Hediye</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Diger</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Aylik Limit(TL):</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDoubleSpinBox" name="spinLimit">
+     <property name="maximum">
+      <double>99999.000000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Ay:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSpinBox" name="spinAy">
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>12</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Yil:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSpinBox" name="spinYil">
+     <property name="minimum">
+      <number>2024</number>
+     </property>
+     <property name="maximum">
+      <number>2030</number>
+     </property>
+     <property name="value">
+      <number>2026</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnIptal">
+     <property name="text">
+      <string>İptal</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnKaydet">
+     <property name="text">
+      <string>Kaydet</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="tableHedefler">
+     <property name="columnCount">
+      <number>4</number>
+     </property>
+     <column/>
+     <column/>
+     <column/>
+     <column/>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

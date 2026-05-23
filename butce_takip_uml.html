@@ -1,0 +1,191 @@
+
+<style>
+#uml { padding: 8px 0; }
+#uml svg { max-width: 100%; }
+.mermaid-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border-tertiary);
+}
+</style>
+<div id="uml">
+  <div class="mermaid-title">Bütçe Takip Uygulaması — UML Sınıf Diyagramı</div>
+  <div id="uml-diagram"></div>
+</div>
+<script type="module">
+import mermaid from 'https://esm.sh/mermaid@11/dist/mermaid.esm.min.mjs';
+const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+await document.fonts.ready;
+mermaid.initialize({
+  startOnLoad: false,
+  theme: 'base',
+  fontFamily: '"Anthropic Sans", sans-serif',
+  themeVariables: {
+    darkMode: dark,
+    fontSize: '13px',
+    fontFamily: '"Anthropic Sans", sans-serif',
+    lineColor: dark ? '#9c9a92' : '#73726c',
+    textColor: dark ? '#c2c0b6' : '#3d3d3a',
+    primaryColor: dark ? '#1e3a5c' : '#dbeafe',
+    primaryTextColor: dark ? '#93c5fd' : '#1e3a5c',
+    primaryBorderColor: dark ? '#3b82f6' : '#3b82f6',
+    secondaryColor: dark ? '#14532d' : '#dcfce7',
+    secondaryTextColor: dark ? '#86efac' : '#14532d',
+    secondaryBorderColor: dark ? '#22c55e' : '#22c55e',
+    tertiaryColor: dark ? '#3b1a5c' : '#f3e8ff',
+    tertiaryTextColor: dark ? '#c4b5fd' : '#3b1a5c',
+    tertiaryBorderColor: dark ? '#a855f7' : '#a855f7',
+    noteBkgColor: dark ? '#292524' : '#fef9c3',
+    noteTextColor: dark ? '#fde68a' : '#713f12',
+  },
+});
+
+const diagram = `classDiagram
+  direction TB
+
+  class Kayit {
+    <<abstract>>
+    #double tutar
+    #QString kategori
+    #QDate tarih
+    +getRapor() double*
+    +getTutar() double
+    +getKategori() QString
+    +~Kayit()
+  }
+
+  class Harcama {
+    -QString aciklama
+    -int id
+    +getRapor() double
+    +getTarih() QString
+    +getAciklama() QString
+    +getId() int
+  }
+
+  class Hedef {
+    -double limitTutar
+    -int ay
+    -int yil
+    -int id
+    +getRapor() double
+    +getLimit() double
+    +getAy() int
+    +getYil() int
+    +getId() int
+  }
+
+  class HarcamaKaydi {
+    <<struct>>
+    +int id
+    +QString kategori
+    +double tutar
+    +QString tarih
+    +QString aciklama
+  }
+
+  class HedefKaydi {
+    <<struct>>
+    +int id
+    +QString kategori
+    +double limitTutar
+    +int ay
+    +int yil
+  }
+
+  class VeriTabani {
+    -QSqlDatabase db
+    +VeriTabani()
+    +~VeriTabani()
+    +baglan() bool
+    +tablolariOlustur() bool
+    +harcamaKaydet(HarcamaKaydi) bool
+    +hedefKaydet(HedefKaydi) bool
+    +harcamaSil(int id) bool
+    +hedefSil(int id) bool
+    +harcamalariGetir(int ay, int yil) QList
+    +hedefleriGetir(int ay, int yil) QList
+    +harcamalariAra(QString, int, int) QList
+  }
+
+  class ButceYoneticisi {
+    -VeriTabani db
+    +ButceYoneticisi()
+    +harcamaEkle(QString, double, QString, QString) bool
+    +hedefEkle(QString, double, int, int) bool
+    +harcamaSil(int id) bool
+    +hedefSil(int id) bool
+    +harcamalariGetir(int ay, int yil) QList
+    +hedefleriGetir(int ay, int yil) QList
+    +harcamalariAra(QString, int, int) QList
+    +kategoriToplam(int ay, int yil) QMap
+    +asistanYorumu(int ay, int yil) QString
+    +hedefleriKopyala(int, int, int, int) bool
+  }
+
+  class MainWindow {
+    -Ui_MainWindow ui
+    -ButceYoneticisi bm
+    +MainWindow(QWidget parent)
+    +~MainWindow()
+    -on_btnHedef_clicked() void
+    -on_btnHarcama_clicked() void
+    -on_btnRapor_clicked() void
+  }
+
+  class HedefDialog {
+    -Ui_HedefDialog ui
+    -ButceYoneticisi bm
+    +HedefDialog(ButceYoneticisi, QWidget)
+    +~HedefDialog()
+    -on_btnKaydet_clicked() void
+    -on_btnIptal_clicked() void
+    -on_btnHedefSil_clicked() void
+    -on_btnKopyala_clicked() void
+    -tabloYenile() void
+  }
+
+  class HarcamaDialog {
+    -Ui_HarcamaDialog ui
+    -ButceYoneticisi bm
+    +HarcamaDialog(ButceYoneticisi, QWidget)
+    +~HarcamaDialog()
+    -on_btnKaydet_clicked() void
+    -on_btnIptal_clicked() void
+    -on_btnSil_clicked() void
+    -tabloYenile() void
+  }
+
+  class RaporDialog {
+    -Ui_RaporDialog ui
+    -ButceYoneticisi bm
+    -QChartView chartView
+    +RaporDialog(ButceYoneticisi, QWidget)
+    +~RaporDialog()
+    -on_btnRapor_clicked() void
+    -on_btnKapat_clicked() void
+    -pieChartOlustur(int ay, int yil) void
+  }
+
+  Kayit <|-- Harcama : kalitim
+  Kayit <|-- Hedef : kalitim
+  ButceYoneticisi *-- VeriTabani : composition
+  VeriTabani ..> HarcamaKaydi : kullanir
+  VeriTabani ..> HedefKaydi : kullanir
+  ButceYoneticisi ..> HarcamaKaydi : kullanir
+  ButceYoneticisi ..> HedefKaydi : kullanir
+  MainWindow *-- ButceYoneticisi : composition
+  MainWindow --> HedefDialog : acar
+  MainWindow --> HarcamaDialog : acar
+  MainWindow --> RaporDialog : acar
+  HedefDialog --> ButceYoneticisi : kullanir
+  HarcamaDialog --> ButceYoneticisi : kullanir
+  RaporDialog --> ButceYoneticisi : kullanir
+`;
+
+const { svg } = await mermaid.render('uml-svg', diagram);
+document.getElementById('uml-diagram').innerHTML = svg;
+</script>
